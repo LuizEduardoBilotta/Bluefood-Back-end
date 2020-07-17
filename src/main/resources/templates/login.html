@@ -22,10 +22,11 @@
 	
 	        <div id="mensagemDeErro">
 	            Aqui vai um exemplo de mensagem de erro!
-	        </div><br>
-	
-	        <input type="button" value="Gostaria de criar a minha conta de usuário" 
-	               onclick="location.href='clienteCadastro.html'">
+	        </div><br />
+	               
+	        <form method="get" th:action="@{/public/cliente/new}">
+	        	<input type="submit" value="Gostaria de criar minha conta de cliente" />
+	        </form>       
 	        <br /><br />
 	        <input type="button" value="Gostaria de criar a minha conta de restaurante"
 	               onclick="location.href='restauranteCadastro.html'" />
