@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluefood</title>
+    <link rel="stylesheet" type="text/css" href="css/bf_estiloSistema.css">
+</head>
+<body>
+    <header>
+        <div id=divLogotipoSistema>
+            <span id="spanAuxiliarDeAlinhamentoVertical"></span>
+            <a href="">
+                <img id="imgLogotipoSistema" src="./images/bf_logotipoSistema.png">
+            </a>
+        </div>
+        <div id="divUsuarioLogado">
+            Olá Nome do Usuário!
+        </div>            
+    </header>
+    <br><br>
+    <!--Fim do cabeçalho-->
+		
+		<div>
+			<h1>Comidas</h1>
+		</div>
+		
+		<div>
+			<span>Pizza de Calabresa</span><br>
+			<span>Pizzas</span><br>
+			<span>Massa fina, queijo, calabresa e pimenta.</span><br>
+			<span>R$ 45,00</span><br>
+			<input type="button" value="Remover"><br><br>
+			
+			<span>Hamburguer</span><br>
+			<span>Hamburguer</span><br>
+			<span>Pão, carne 200gr, queijo, tomate e alface..</span><br>
+			<span>R$ 30,00</span><br>
+			<input type="button" value="Remover"><br><br>
+			
+
+			<div id="mensagemDeErro">
+				Eventual mensagem de erro.
+			</div><br>
+			
+			<span>Nova comida:</span><br>
+			<form method="post" action="">
+				<label for="item">Item: </label><br>	
+				<input type="text" name="item" id="item"><br>
+				
+				<label for="descricao">Descrição: </label><br>	
+				<input type="text" name="descricao" id="descricao"><br>
+				
+				<label for="preco">Preço: </label><br>	
+				<input type="text" name="preco" id="preco"><br>
+				
+				<label for="categoria">Categoria de comida: </label><br>	
+				<input type="text" name="categoria" id="categoria"><br>
+				
+				<label for="destaque">Destaque: </label><br>	
+				<input type="checkbox" name="destaque" id="destaque"><br><br>
+					
+				<input type="button" value="Adicionar"><br><br>
+			</form>
+		</div>
+
+		<input type="button" value="Voltar">
+
+		<!-- Rodapé - Início -->
+		<br><br>
+	</body>
+</html>
+

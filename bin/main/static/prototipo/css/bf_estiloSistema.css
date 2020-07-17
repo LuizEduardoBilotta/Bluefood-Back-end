@@ -1,0 +1,187 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+fieldset{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 2px solid;
+}
+
+h1{
+    color: #1e9bde;
+    background-color: #eeeeee;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 20px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 10px solid #1e9bde;
+    border-right: 10px solid #1e9bde;
+    border-bottom: 2px solid #1e9bde;
+    border-top: 2px solid #1e9bde;
+    border-radius: 30px;
+}
+
+input, textarea, select{
+    border: 2px solid #1e9bde;
+    height: 35px;
+    margin-bottom: 6px;
+}
+
+input[type=text], input[type=password], select{
+    font-size:  16px;
+    width: 140px;
+    padding-left: 5px;    
+}
+
+input[type=button], input[type=submit]{
+    background-color: #1e9bde;
+    border-bottom: 3px solid #0153b0;
+    border-top: 1px solid #0153b0;
+    border-left: 1px solid #0153b0;
+    border-right: 1px solid #0153b0;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 5px 8px;
+}
+
+input[type=button]:hover, input[type=submit]:hover{
+    background-color: #69c5ee;
+    border-color: #1e9bde;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    border-spacing: 1px;
+}
+
+td{
+    padding: 3px;
+}
+
+th{
+    background-color: #1e9bde;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 3px;
+}
+
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+
+textarea{
+    width: 300px;
+    height: 100px;
+}
+
+#divLogotipoSistema{
+    background-color: #1e9bde;
+    height: 70px;
+}
+
+#divCategoriasComidaOpcao{
+    height: 130px;
+    float: left;
+}
+
+#divRestauranteOpcao{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#divCategoriasComidaGeral{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+#imgLogotipoSistema{
+    height: 60%;
+    vertical-align: middle;
+}
+
+#imgCategoriaComida{
+    height: 50%;
+}
+
+#spanAuxiliarDeAlinhamentoVertical{
+    display:inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#imgIconeUsuario{
+    width: 100px;
+}
+
+#imgRestauranteOpcao{
+    height: 130px;
+}
+
+#inputSelecionado{
+    background-color: #69c5ee;
+    border-color: #1e9bde;
+}
+
+#mensagemDeErro{
+    background-color: #d40000;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px;
+}
+
+#mensagemDeSecesso{
+    background-color: #0baf00;  
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    color: #ffffff;  
+    padding: 10px;
+}
+
+#divUsuarioLogado{
+    background-color: #7bc2e5;
+    color: #ffffff;
+    line-height: 40px;
+}
+
+#imageIconeCarrinho{
+    height: 50px;
+}
+
+#restauranteOpcaoTitulo{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.inputError{
+    border: 2px solid #ff2828;
+}
+
