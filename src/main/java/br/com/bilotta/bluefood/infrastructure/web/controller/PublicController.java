@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.bilotta.bluefood.application.ClienteService;
 import br.com.bilotta.bluefood.application.ValidationException;
 import br.com.bilotta.bluefood.domain.cliente.Cliente;
+import br.com.bilotta.bluefood.domain.restaurante.Restaurante;
 
 @Controller
 @RequestMapping(path = "/public")
@@ -27,6 +28,13 @@ public class PublicController {
 		model.addAttribute("cliente", new Cliente());
 		ControllerHelper.setEditMode(model, false);
 		return "cliente-cadastro";
+	}
+	
+	@GetMapping("restaurante/new")
+	public String newRestaurante(Model model) {
+		model.addAttribute("restaurante", new Restaurante());
+		ControllerHelper.setEditMode(model, false);
+		return "restaurante-cadastro";
 	}
 	
 	@PostMapping("cliente/save")

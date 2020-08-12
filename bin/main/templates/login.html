@@ -26,10 +26,11 @@
 	               
 	        <form method="get" th:action="@{/public/cliente/new}">
 	        	<input type="submit" value="Gostaria de criar minha conta de cliente" />
-	        </form>       
-	        <br /><br />
-	        <input type="button" value="Gostaria de criar a minha conta de restaurante"
-	               onclick="location.href='restauranteCadastro.html'" />
+	        </form>   
+	        
+	        <form method="get" th:action="@{/public/restaurante/new}">
+	        	<input type="submit" value="Gostaria de criar minha conta de restaurante" />
+	        </form>     
 	    </div>
   	</div>
 </body>
