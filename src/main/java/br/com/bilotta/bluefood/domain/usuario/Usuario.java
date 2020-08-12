@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import br.com.bilotta.bluefood.util.StringUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,4 +46,8 @@ public class Usuario implements Serializable{
 	@Pattern(regexp = "[0-9]{10,11}", message = "O telefone não possui formato válido!")
 	@Column(length = 11, nullable = false)
 	private String telefone;
+	
+	public void encriptPassword() {
+		this.senha = StringUtils.encrypt(this.senha);
+	}
 }
