@@ -1,9 +1,14 @@
 package br.com.bilotta.bluefood.domain.restaurante;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -43,5 +48,11 @@ public class Restaurante extends Usuario{
 	@Max(120)
 	private Integer tempoEntregaBase;
 	
-
+	@ManyToMany
+	@JoinTable(
+			name = "restaurante_has_categoria",
+			joinColumns = @JoinColumn(name = "restaurante_id"),
+			inverseJoinColumns = @JoinColumn(name = "categoria_restaurante_id")
+			  )
+	private Set<CategoriaRestaurante> categorias = new HashSet<>(0);
 }
