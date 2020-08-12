@@ -8,51 +8,79 @@
 
 	<div layout:fragment="content">
 		
-		<div>
-			<h1>Cadastro de Restaurante</h1>
-			
-			<form method="post" action="">
-				<fieldset>
-					<label for="nome">Nome do Restaurante: </label><br>	
-					<input type="text" id="nome" name="nome" placeholder="Nome..."><br><br>
-					
-					<label for="cnpj">CNPJ: </label><br>	
-					<input type="text" id="cnpj" name="cnpj" placeholder="CNPJ..."><br><br>
-					
-					<label for="email">E-mail: </label><br>	
-					<input type="text" id="email" name="email" placeholder="E-mail..."><br><br>
-					
-					<label for="telefone">Telefone: </label><br>	
-					<input type="text" id="telefone" name="telefone" placeholder="Telefone..."><br><br>
-					
-					<label for="cep">CEP: </label><br>	
-					<input type="text" id="cep" name="cep" placeholder="CEP..."><br><br>
-					
-					<label for="categoria">Categoria de comida: </label><br>	
-					<select name="categoria" id="categoria">
-						<option>Salada</option>
-						<option>Churrasco</option>
-						<option>Pizza</option>
-						<option>Hamburguer</option>
-					</select><br><br>
-					
-					<label for="logotipo">Logotipo: </label><br>	
-					<input type="file" id="logotipo" name="logotipo" placeholder="Selecionar..."><br><br>
-					
-					<label for="senha">Senha: </label><br>	
-					<input type="password" id="senha" name="senha" placeholder="Senha..."><br><br>
-					
-					<div id="mensagemDeErro">
-						Aqui vai um exemplo de mensagem de erro
-					</div><br>
-			
-					<input type="button" value="Cadastrar">
-				</fieldset>
-			</form>
-			<br>
-			
-			<input type="button" value="Voltar">
-		</div>
+		<h1>Cadastro de Restaurante</h1>
+		
+		<form method="post" th:object="${restaurante}" th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}">
+			<fieldset>
+				
+				<input type="hidden" th:field="*{id}"/>
+				
+				<label for="nome">Nome do Restaurante: </label><br />	
+				<input type="text" id="nome" name="nome" placeholder="Nome..." th:field="*{nome}"
+					   th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" />
+				<br /><br />
+				<div id="mensagemDeErro" th:if="${#fields.hasErrors('nome')}">
+					<span th:errors="*{nome}"></span>
+				</div>
+				
+				<label for="cnpj">CNPJ: </label><br />	
+				<input type="text" id="cnpj" name="cnpj" placeholder="CNPJ..." th:field="*{cnpj}"
+					   th:classappend="${#fields.hasErrors('cnpj')} ? 'inputError' : ''" />
+				<br /><br />
+				<div id="mensagemDeErro" th:if="${#fields.hasErrors('cnpj')}">
+					<span th:errors="*{cnpj}"></span>
+				</div>
+				
+				<label for="email">E-mail: </label><br />	
+				<input type="text" id="email" name="email" placeholder="E-mail..." th:field="*{email}"
+					   th:classappend="${#fields.hasErrors('email')} ? 'inputError' : ''" />
+				<br /><br />
+				<div id="mensagemDeErro" th:if="${#fields.hasErrors('email')}">
+					<span th:errors="*{email}"></span>
+				</div>
+				
+				<label for="telefone">Telefone: </label><br />	
+				<input type="text" id="telefone" name="telefone" placeholder="Telefone..." th:field="*{telefone}"
+					   th:classappend="${#fields.hasErrors('telefone')} ? 'inputError' : ''" />
+				<br /><br />
+				<div id="mensagemDeErro" th:if="${#fields.hasErrors('telefone')}">
+					<span th:errors="*{telefone}"></span>
+				</div>
+				
+				<label for="taxaEntrega">Taxa de Entrega:</label><br />
+				<input type="text" id="taxaEntrega" name="taxaEntrega" placeholder="Taxa de Entrega ..." th:field="*{taxaEntrega}"
+				       th:classappend="${#fields.hasErrors('taxaEntrega')} ? 'inputError' : ''">
+				<br /><br />
+				<div id="mensagemDeErro" th:if="${#fields.hasErrors('taxaEntrega')}">
+					<span th:errors="*{taxaEntrega}"></span>
+				</div>
+				
+				<label for="logotipo">Logotipo: </label><br />	
+				<input type="file" id="logotipo" name="logotipo" placeholder="Selecionar..."><br /><br />
+				
+				<label for="categoria">Categoria de comida: </label><br />	
+				<select name="categoria" id="categoria" multiple="multiple" th:field="*{categorias}" style="height: 90px;">
+					<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+				</select><br /><br />
+				
+				<div th:if="${!editMode}">
+					<label for="senha">Senha: </label><br />	
+					<input type="password" id="senha" name="senha" placeholder="Senha..." th:field="*{senha}"
+					       th:classapend="${#fields.hasErrors('senha')} ? 'inputError' : ''" />
+					<br /><br />
+					<div id="mensagemDeErro" th:if="${#fields.hasErrors('senha')}">
+						<span th:errors="*{senha}"></span>
+					</div>
+				</div>
+				
+				<input type="hidden" name="senha" value="*" th:if="${editMode}"/>
+				
+				<input type="submit" th:value="${!editMode} ? 'Cadastrar' : 'Alterar'" />
+			</fieldset>
+		</form>
+		<br />
+		
+		<input type="button" value="Voltar">
 	</div>
 
 </body>

@@ -66,6 +66,7 @@
 						<span th:errors="*{senha}"></span>
 					</div>
 				</div>
+				
 				<input type="hidden" name="senha" value="*" th:if="${editMode}" />
 				 
 				<input type="submit" th:value="${!editMode} ? 'Cadastrar' : 'Alterar'" />
