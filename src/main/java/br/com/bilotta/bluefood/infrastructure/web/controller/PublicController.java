@@ -25,6 +25,7 @@ public class PublicController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@Autowired
 	private RestauranteService restauranteService;
 	
 	@Autowired

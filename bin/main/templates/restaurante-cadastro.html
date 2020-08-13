@@ -15,7 +15,7 @@
 		</div>
 		<br />
 		
-		<form method="post" th:object="${restaurante}" th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}" enctype="multipart/form-data">
+		<form method="post" th:object="${restaurante}" th:action="${editMode} ? @{/restaurante/save} : @{/public/restaurante/save}" enctype="multipart/form-data">
 			<fieldset>
 				
 				<input type="hidden" th:field="*{id}"/>
@@ -61,7 +61,7 @@
 				</div>
 				
 				<label for="tempoEntrega">Tempo de Entrega (mín.):</label><br />
-				<input type="text" id="tempoEntregaBase" name="tempoEntregaBase" placeholder="Tempo de Entrega..." th:field="*{tempoEntregaBase}"
+				<input type="text" id="tempoEntrega" name="tempoEntrega" placeholder="Tempo de Entrega..." th:field="*{tempoEntregaBase}"
 				       th:classappend="${#fields.hasErrors('tempoEntregaBase')} ? 'inputError' : ''"/>
 				<br /><br />
 				<div id="mensagemDeErro" th:if="${#fields.hasErrors('tempoEntregaBase')}">
