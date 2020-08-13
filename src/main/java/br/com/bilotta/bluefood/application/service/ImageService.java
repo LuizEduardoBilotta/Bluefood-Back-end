@@ -1,4 +1,4 @@
-package br.com.bilotta.bluefood.application;
+package br.com.bilotta.bluefood.application.service;
 
 import java.io.IOException;
 
