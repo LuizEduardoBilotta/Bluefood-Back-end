@@ -12,6 +12,7 @@ public class RestauranteService {
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 	
+	@Autowired
 	private ImageService imageService;
 	
 	public void saveRestaurante(Restaurante restaurante) throws ValidationException {

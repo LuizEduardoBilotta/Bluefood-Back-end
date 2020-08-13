@@ -69,35 +69,7 @@ public class PublicController {
 			Errors errors,
 			Model model) {
 		
-		if(errors.hasErrors()) {
-			System.out.println("CNPJ: " + restaurante.getCnpj());
-			System.out.println("Email: " + restaurante.getEmail());
-			System.out.println("Logotipo: " + restaurante.getLogotipo());
-			System.out.println("Nome: " + restaurante.getNome());
-			System.out.println("Senha: " + restaurante.getSenha());
-			System.out.println("Telefone: " + restaurante.getTelefone());
-			System.out.println("Categorias: " + restaurante.getCategorias());
-			System.out.println("ID: " + restaurante.getId());
-			System.out.println("LogotioFile: " + restaurante.getLogotipoFile());
-			System.out.println("Taxa de Entrega: " + restaurante.getTaxaEntrega());
-			System.out.println("Tempo de Entrega Base: " + restaurante.getTempoEntregaBase());
-			System.out.println("Erro:" + errors);
-		}
-		
 		if(!errors.hasErrors()) {
-			
-			System.out.println("CNPJ: " + restaurante.getCnpj());
-			System.out.println("Email: " + restaurante.getEmail());
-			System.out.println("Logotipo: " + restaurante.getLogotipo());
-			System.out.println("Nome: " + restaurante.getNome());
-			System.out.println("Senha: " + restaurante.getSenha());
-			System.out.println("Telefone: " + restaurante.getTelefone());
-			System.out.println("Categorias: " + restaurante.getCategorias());
-			System.out.println("ID: " + restaurante.getId());
-			System.out.println("LogotioFile: " + restaurante.getLogotipoFile());
-			System.out.println("Taxa de Entrega: " + restaurante.getTaxaEntrega());
-			System.out.println("Tempo de Entrega Base: " + restaurante.getTempoEntregaBase());
-			System.out.println("Erro:" + errors);
 			
 			try {
 				restauranteService.saveRestaurante(restaurante);
