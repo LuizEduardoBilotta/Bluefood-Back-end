@@ -14,7 +14,7 @@ public class LoginController {
 	
 	@GetMapping(path = { "/login-error" })
 	public String loginError (Model model) {
-		model.addAttribute("Credenciais inválidas!");
+		model.addAttribute("msg","Credenciais inválidas!");
 		return "login";
 	}
 }
