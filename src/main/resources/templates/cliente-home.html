@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{layout}"
+>
+
+<body>
+	<div layout:fragment="content">
+
+	    <div>
+	        <h1>É hora de rangar!</h1>
+	        <form method="POST" action="">
+	            <fieldset>
+	                <input type="text" name="busca" placeholder="Buscar por..."/>
+	                <input type="button" value="Procurar" onclick="location.href='clienteBusca.html'"/>
+	            </fieldset>
+	        </form>
+	    </div>
+	
+	    <div id="divCategoriasComidaGeral">
+	        <div id="divCategoriasComidaOpcao">
+	            <a href="#">
+	                <img id="imgCategoriaComida" src="./images/sys_categoriaChurrasco.png"/><br/>
+	                <span>Churrasco</span>
+	            </a>
+	        </div>
+	        <div id="divCategoriasComidaOpcao">
+	            <a href="#">
+	                <img id="imgCategoriaComida" src="./images/sys_categoriaHamburguer.png"/><br/>
+	                <span>Hamburguer</span>
+	            </a>
+	        </div>
+	        <div id="divCategoriasComidaOpcao">
+	            <a href="#">
+	                <img id="imgCategoriaComida" src="./images/sys_categoriaPizza.png"/><br/>
+	                <span>Pizza</span>
+	            </a>
+	        </div>
+	        <div id="divCategoriasComidaOpcao">
+	            <a href="#">
+	                <img id="imgCategoriaComida" src="./images/sys_categoriaSalada.png"/><br/>
+	                <span>Salada</span>
+	            </a>
+	        </div>
+	        <div id="divCategoriasComidaOpcao">
+	            <a href="#">
+	                <img id="imgCategoriaComida" src="./images/sys_categoriaSobremesa.png"/><br/>
+	                <span>Sobremesa</span>
+	            </a>
+	        </div>
+	    </div>
+	
+	    <div>
+	        <h1>Últimos Pedidos</h1>
+	        <input type="button" value="#15124 McBlunalds"/><br/>
+	        <input type="button" value="#35464 Blue Pizza"/><br/>
+	        <input type="button" value="#38754 Hard Blue"/><br/>
+	    </div>
+	
+	    <div>
+	        <h1>Conta</h1>
+	        <input type="button" value="Meus dados" th:onclick="'location.href=\'' + @{/cliente/edit} + '\';'"/>
+	        <input type="button" value="Sair" th:onclick="'location.href=\'' + @{/logout} + '\';'"/>
+	    </div>
+	 </div>
+
+</body>
+</html>
