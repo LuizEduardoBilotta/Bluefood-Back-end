@@ -23,6 +23,7 @@ import br.com.bilotta.bluefood.domain.cliente.ClienteRepository;
 import br.com.bilotta.bluefood.domain.restaurante.CategoriaRestaurante;
 import br.com.bilotta.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.bilotta.bluefood.domain.restaurante.Restaurante;
+import br.com.bilotta.bluefood.domain.restaurante.RestauranteRepository;
 import br.com.bilotta.bluefood.domain.restaurante.SearchFilter;
 import br.com.bilotta.bluefood.util.SecurityUtils;
 
@@ -35,6 +36,9 @@ public class ClienteController {
 	
 	@Autowired
 	private CategoriaRestauranteRepository categoriaRestauranteRepository;
+	
+	@Autowired
+	private RestauranteRepository restauranteRepository;
 	
 	@Autowired
 	private ClienteService clienteService;
@@ -92,8 +96,21 @@ public class ClienteController {
 		ControllerHelper.addCategoriasToRequest(categoriaRestauranteRepository, model);
 		
 		model.addAttribute("searchFilter", filter);
+		model.addAttribute("cep", SecurityUtils.loggedCliente().getCep());
 		
 		return "cliente-busca";
+	}
+	
+	@GetMapping("/restaurante")
+	public String viewRestaurante(
+			@RequestParam("restauranteId") Integer restauranteId,
+			Model model) {
+		
+		Restaurante restaurante = restauranteRepository.findById(restauranteId).orElseThrow();
+		model.addAttribute("restaurante", restaurante);
+		model.addAttribute("cep", SecurityUtils.loggedCliente().getCep());
+		
+		return "cliente-restaurante";
 	}
 	
 }
