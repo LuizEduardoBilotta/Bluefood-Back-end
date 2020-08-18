@@ -30,18 +30,24 @@
 		            </a>
 		        </div>
 		    </div>
-	    </form>
-	    
-	    <div>
-	        <h1>Resultados</h1>
-	        <fieldset>
-	            <legend>Filtros</legend>
-	            <input type="button" value="Entrega Grátis"/><br/>
-	            <input type="button" value="Maior preço"/> <input type="button" value="Menor preço"/><br/>
-	            <input type="button" value="Maior taxa"/> <input type="button" value="Menor taxa"/><br/>
-	            <input type="button" value="Maior tempo"/> <input id="inputSelecionado" type="button" value="Menor tempo"/><br/>
-	        </fieldset>
-	    </div>
+	   
+		    <div>
+		        <h1>Resultados</h1>
+		        <fieldset>
+		            <legend>Filtros</legend>
+		            <input type="button" value="Entrega Grátis" th:id="*{entregaGratis} ? 'inputSelecionado' : ''" onclick="setCmd('EntregaGratis');" /><br />
+		            <input type="button" value="Maior taxa" th:id="*{order.name()} == 'Taxa' and !*{asc} ? 'inputSelecionado' : ''" onclick="setCmd('MaiorTaxa');" /> 
+		            <input type="button" value="Menor taxa" th:id="*{order.name()} == 'Taxa' and *{asc} ? 'inputSelecionado' : ''" onclick="setCmd('MenorTaxa');" /><br />
+		            <input type="button" value="Maior tempo" th:id="*{order.name()} == 'Tempo' and !*{asc} ? 'inputSelecionado' : ''" onclick="setCmd('MaiorTempo');" /> 
+		            <input type="button" value="Menor tempo" th:id="*{order.name()} == 'Tempo' and *{asc} ? 'inputSelecionado' : ''" onclick="setCmd('MenorTempo');" /><br />
+		            
+		            <input type="hidden" id="entregaGratis" th:field="*{entregaGratis}" />
+		            <input type="hidden" id="order" th:field="*{order}" />
+		            <input type="hidden" id="asc" th:field="*{asc}" />
+		            <input type="hidden" id="cmd" name="cmd" />
+		        </fieldset>
+		    </div>
+	     </form>
 	
 	    <div id="divRestaurantesgeral">
 	        <div id="divRestauranteOpcao" th:each="restaurante : ${restaurantes}">
