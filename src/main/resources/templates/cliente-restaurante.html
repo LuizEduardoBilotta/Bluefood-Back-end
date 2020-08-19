@@ -20,10 +20,9 @@
 	        <h1>Opções</h1>
 	        <fieldset>
 	            <legend>Filtros</legend>
-	            <input type="button" value="Promoções"/>
-	            <input type="button" value="Saladas"/>
-	            <input type="button" value="Bebidas"/>
-	            <input type="button" value="Pizzas"/>
+	            <div style="display: inline;" th:each="categoria : ${categorias}">
+	            	<input type="button" th:value="${categoria}"/>
+	            </div>
 	        </fieldset>
 	        <br/>
 	    </div>
@@ -32,44 +31,15 @@
 	        <h1>Destaques</h1>
 	    </div>
 	
-	    <div>
-	        <div>
-	            <img src="./images/sys_comidaPizzaCalabresa.png"/>
+	    <div id="categoriasComidaGeral">
+	        <div id="divRestauranteOpcao" th:each="item : ${itensCardapioDestaque}">
+	            <img id="imgRestauranteOpcao" th:src="@{/images/comida/} + ${item.imagem}" />
 	            <br/>
-	            <span>Pizza de Calabresa</span>
+	            <span id="restauranteOpcaoTitulo" th:text="${item.nome}"></span>
 	            <br/>
-	            <span>Massa fina, queijo, calabresa e pimenta.</span>
+	            <span th:text="${item.descricao}"></span>
 	            <br/>
-	            <span>R$ 45,00</span>
-	            <br/>
-	            <form method="POST" action="">
-	                <label for="quantidade">Quantidade:</label>
-	                <br/>
-	                <select name="quantidade" id="quantidade">
-	                    <option>1</option>
-	                    <option>2</option>
-	                    <option>3</option>
-	                    <option>4</option>
-	                </select>
-	                <br/><br/>
-	                Observações:
-	                <br/>
-	                <textarea>
-	
-	                </textarea>
-	                <br/><br/>
-	                <input type="button" value="Adicionar ao carrinho" onclick="location.href='clienteCarrinho.html'"/>
-	            </form>
-	        </div>
-	
-	        <div>
-	            <img src="./images/sys_comidaHamburguer.png"/>
-	            <br/>
-	            <span>Hamburguer</span>
-	            <br/>
-	            <span>Pão, hamburguer 200gr, queijo, tomate, alface e bacon.</span>
-	            <br/>
-	            <span>R$ 45,00</span>
+	            <span th:text="${#numbers.formatCurrency(item.preco)}"></span>
 	            <br/>
 	            <form method="POST" action="">
 	                <label for="quantidade">Quantidade:</label>
@@ -90,9 +60,46 @@
 	                <input type="button" value="Adicionar ao carrinho" onclick="location.href='clienteCarrinho.html'"/>
 	            </form>
 	        </div>
-	    </div>
+     	</div>
+	    
+	    <br />    
+        <div>
+        	<h1>Menu</h1>
+    	</div>
 	
-	    <input type="button" value="Voltar" onclick="location.href='clienteBusca.html'"/>
+        <div id="categoriasComidaGeral">
+	        <div id="divRestauranteOpcao" th:each="item : ${itensCardapioNaoDestaque}">
+	            <img id="imgRestauranteOpcao" th:src="@{/images/comida/} + ${item.imagem}"/>
+	            <br/>
+	            <span id="restauranteOpcaoTitulo" th:text="${item.nome}"></span>
+	            <br/>
+	            <span th:text="${item.descricao}"></span>
+	            <br/>
+	            <span th:text="${#numbers.formatCurrency(item.preco)}"></span>
+	            <br/>
+	            <form method="POST" action="">
+	                <label for="quantidade">Quantidade:</label>
+	                <br/>
+	                <select name="quantidade" id="quantidade">
+	                    <option>1</option>
+	                    <option>2</option>
+	                    <option>3</option>
+	                    <option>4</option>
+	                </select>
+	                <br/><br/>
+	                Observações:
+	                <br/>
+	                <textarea>
+	
+	                </textarea>
+	                <br/><br/>
+	                <input type="button" value="Adicionar ao carrinho" onclick="location.href='clienteCarrinho.html'"/>
+	            </form>
+	        </div>
+        </div>
+   
+	
+	    <input type="button" value="Voltar" th:onclick="'location.href=\'' + @{/cliente/search} + '\';'"/>
 	</div>
     
 </body>
