@@ -18,12 +18,21 @@
 	
 	    <div>
 	        <h1>Opções</h1>
-	        <fieldset>
-	            <legend>Filtros</legend>
-	            <div style="display: inline;" th:each="categoria : ${categorias}">
-	            	<input type="button" th:value="${categoria}"/>
-	            </div>
-	        </fieldset>
+	        <form id="filterForm" action="GET" th:action="@{/cliente/restaurante}">
+	        <input type="hidden" id="categoria" name="categoria"/>
+	        <input type="hidden" name="restauranteId" th:value="${restaurante.id}"/>
+		        <fieldset>
+		            <legend>Filtros</legend>
+		            <div style="display: inline;" th:each="categoria : ${categorias}">
+		            	<input th:id="${categoria == categoriaSelecionada} ? 'inputSelecionado' : ''" 
+		            		   type="button" 
+		            		   th:value="${categoria}" 
+		            		   th:data-categoria="${categoria}" 
+		            		   onclick="filterCardapio(this.getAttribute('data-categoria'));"
+		            	/>
+		            </div>
+		        </fieldset>
+		    </form>
 	        <br/>
 	    </div>
 	
@@ -41,7 +50,8 @@
 	            <br/>
 	            <span th:text="${#numbers.formatCurrency(item.preco)}"></span>
 	            <br/>
-	            <form method="POST" action="">
+	            <form method="GET" th:action="@{/cliente/carrinho/adicionar}">
+	            	<input type="hidden" name="itemId" th:value="${item.id}"/>
 	                <label for="quantidade">Quantidade:</label>
 	                <br/>
 	                <select name="quantidade" id="quantidade">
@@ -53,13 +63,14 @@
 	                <br/><br/>
 	                Observações:
 	                <br/>
-	                <textarea>
-	
-	                </textarea>
+	                <textarea name="observacoes"></textarea>
 	                <br/><br/>
-	                <input type="button" value="Adicionar ao carrinho" onclick="location.href='clienteCarrinho.html'"/>
+	                <input type="submit" value="Adicionar ao carrinho" />
 	            </form>
 	        </div>
+	        <div th:if="${itensCardapioDestaque.size() == 0}">
+	    		<span>Ops! Não temos nenhum destaque.</span>
+	    	</div>
      	</div>
 	    
 	    <br />    
@@ -77,7 +88,8 @@
 	            <br/>
 	            <span th:text="${#numbers.formatCurrency(item.preco)}"></span>
 	            <br/>
-	            <form method="POST" action="">
+	            <form method="GET" action="@{/cliente/carrinho/adicionar}">
+	            	<input type="hidden" name="itemId" value="${item.id}"/>
 	                <label for="quantidade">Quantidade:</label>
 	                <br/>
 	                <select name="quantidade" id="quantidade">
@@ -89,17 +101,17 @@
 	                <br/><br/>
 	                Observações:
 	                <br/>
-	                <textarea>
+	                <textarea name="observacoes">
 	
 	                </textarea>
 	                <br/><br/>
-	                <input type="button" value="Adicionar ao carrinho" onclick="location.href='clienteCarrinho.html'"/>
+	                <input type="submit" value="Adicionar ao carrinho" />
 	            </form>
 	        </div>
         </div>
    
 	
-	    <input type="button" value="Voltar" th:onclick="'location.href=\'' + @{/cliente/search} + '\';'"/>
+	    <input type="button" value="Voltar" th:onclick="'location.href=\'' + @{/cliente/home} + '\';'"/>
 	</div>
     
 </body>
