@@ -88,8 +88,8 @@
 	            <br/>
 	            <span th:text="${#numbers.formatCurrency(item.preco)}"></span>
 	            <br/>
-	            <form method="GET" action="@{/cliente/carrinho/adicionar}">
-	            	<input type="hidden" name="itemId" value="${item.id}"/>
+	            <form method="GET" th:action="@{/cliente/carrinho/adicionar}">
+	            	<input type="hidden" name="itemId" th:value="${item.id}"/>
 	                <label for="quantidade">Quantidade:</label>
 	                <br/>
 	                <select name="quantidade" id="quantidade">

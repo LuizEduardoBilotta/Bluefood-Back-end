@@ -22,4 +22,9 @@ public class ItemPedido {
 	private String observacoes;
 	
 	private BigDecimal preco;
+	
+	
+	public BigDecimal getPrecoCalculado() {
+		return preco.multiply(BigDecimal.valueOf(quantidade));
+	}
 }
