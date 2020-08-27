@@ -3,12 +3,14 @@ package br.com.bilotta.bluefood.domain.pedido;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -66,5 +68,7 @@ public class Pedido implements Serializable {
 	@NotNull
 	private BigDecimal total;
 	
+	@OneToMany(mappedBy = "id.pedido")
+	private Set<ItemPedido> itens;
 	
 }
