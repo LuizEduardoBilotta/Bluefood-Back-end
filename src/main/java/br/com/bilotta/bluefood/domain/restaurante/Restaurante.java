@@ -73,6 +73,10 @@ public class Restaurante extends Usuario{
 	@OneToMany(mappedBy = "restaurante")
 	private Set<ItemCardapio> itemCardapio = new HashSet<>(0);
 	
+	
+	
+	
+	
 	public void setLogotipoFileName() {
 		if (getId() == null) {
 			throw new IllegalStateException("É necessário primeiramente gravar o registro!");

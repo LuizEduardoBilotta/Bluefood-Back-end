@@ -66,6 +66,8 @@ public class ItemCardapio implements Serializable {
 	private transient MultipartFile imageFile;
 	
 	
+	
+	
 	public void setImagemFileName() {
 		if(getId() == null) {
 			throw new IllegalStateException("O objetodo item de cardápio precisar ser criado primeiro!");
