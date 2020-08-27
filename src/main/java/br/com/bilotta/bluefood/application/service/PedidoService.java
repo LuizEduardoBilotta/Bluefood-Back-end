@@ -15,6 +15,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.bilotta.bluefood.domain.pagamento.DadosCartao;
+import br.com.bilotta.bluefood.domain.pagamento.Pagamento;
+import br.com.bilotta.bluefood.domain.pagamento.PagamentoRepository;
 import br.com.bilotta.bluefood.domain.pagamento.StatusPagamento;
 import br.com.bilotta.bluefood.domain.pedido.Carrinho;
 import br.com.bilotta.bluefood.domain.pedido.ItemPedido;
@@ -37,6 +39,9 @@ public class PedidoService {
 	
 	@Autowired
 	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
 	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
@@ -87,6 +92,12 @@ public class PedidoService {
 			if (statusPagamento != StatusPagamento.Autorizado) {
 				throw new PagamentoException(statusPagamento.getDescricao());
 			}
+			
+			Pagamento pagamento = new Pagamento();
+			pagamento.setData(LocalDateTime.now());
+			pagamento.setPedido(pedido);
+			pagamento.definirNumeroEBandeira(numCartao);
+			pagamentoRepository.save(pagamento);
 		
 		
 		return pedido;
