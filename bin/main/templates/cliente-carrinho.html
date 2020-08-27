@@ -44,15 +44,17 @@
 			    </div>
 			    <br/><br/>
 			
-			    <div>
-			        <span>Cartão de Crédito</span><br/>
-			        <input type="text" name="cartao"/>
-			    </div>
-			
-			    <div>
-			        <input type="button" value="Enviar pedido" onclick="location.href='clientePedido.html'"/><br/>
-			        <input type="button" value="Voltar" onclick="location.href='clienteRestaurante.html'"/>
-			    </div>
+			    <form method="post" th:action="@{/cliente/pagamento/pagar}">
+				    <div>
+				        <span>Cartão de Crédito</span><br />
+				        <input type="text" name="numCartao" onkeypress="return isNumberKey(event)" />
+				    </div>
+				
+				    <div>
+				        <input type="submit" value="Enviar pedido" /><br />
+				        <input type="button" value="Voltar" onclick="location.href='clienteRestaurante.html'"/>
+				    </div>
+				</form>
 			</div>
 		</div>
         
