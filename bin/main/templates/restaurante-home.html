@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{layout}" th:with="link=@{/restaurante/home}"
+>
+
+<body>
+	<div layout:fragment="content">
+		
+		<div>
+			<h1>Configurações</h1>
+			<input type="button" value="Dados básicos" th:onclick="'location.href=\'' + @{/restaurante/edit} + '\';'"><br>
+			<input type="submit" value="Categorias de comida"><br>
+			<input type="submit" value="Comidas" onclick="location.href='restauranteComidas.html'"><br>
+			<input type="submit" value="Relatório de Pedidos" 
+			       onclick="location.href='restauranteRelatorioPedidos.html'"><br>
+			<input type="submit" value="Relatório de Itens" 
+				   onclick="location.href='restauranteRelatorioItens.html'"><br>
+			<input type="button" value="Sair" th:onclick="'location.href=\'' + @{/logout} + '\';'"><br>
+		</div>
+		
+		<div>
+			<h1>Pedidos em andamento</h1>
+			<input type="submit" value="#35334" onclick="location.href='restaurantePedido.html'"><br>
+			<input type="submit" value="#8956" onclick="location.href='restaurantePedido.html'"><br>
+			<input type="submit" value="#14214" onclick="location.href='restaurantePedido.html'"><br>
+		</div>
+	 </div>	
+</body>
+</html>
+
