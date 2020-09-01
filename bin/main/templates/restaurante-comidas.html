@@ -17,14 +17,14 @@
 			<span id="restauranteOpcaoTitulo" th:text="${item.nome}"></span><br />
 			<span th:text="${item.categoria}"></span><br />
 			<span th:text-="${item.descricao}"></span><br />
-			<span th:text="${#numbers.formatCurrency(item.preco)}">R$ 45,00</span><br />
+			<span th:text="${#numbers.formatCurrency(item.preco)}"></span><br />
 			<input type="button" value="Remover" th:onclick="'location.href=\'' + @{/restaurante/comidas/remover} + '?itemId=' + ${item.id} + '\';'"><br /><br />
 		</div>
 		
 		<span th:if="${itensCardapio.size() == 0}">Não existem comidas cadastradas.</span>	
 
-			<div id="mensagemDeErro" th:if="${msg != null}">
-				<span th:text="${msg}"></span>
+			<div id="mensagemDeSucesso" th:if="${msgSucesso != null}">
+				<span th:text="${msgSucesso}"></span>
 			</div><br />
 			
 			<span id="restauranteOpcaoTitulo">Nova comida:</span><br />

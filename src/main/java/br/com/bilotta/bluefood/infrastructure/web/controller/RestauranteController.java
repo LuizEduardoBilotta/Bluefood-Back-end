@@ -113,8 +113,7 @@ public class RestauranteController {
 		}
 		
 		restauranteService.saveItemCardapio(itemCardapio);
-		model.addAttribute("msg", "Ooww ... Algo deu errado!");
-		return "restaurante-comidas";
+		return "redirect:/restaurante/comidas";
 	}
 	
 }
