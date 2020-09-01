@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.bilotta.bluefood.application.service.RestauranteService;
 import br.com.bilotta.bluefood.application.service.ValidationException;
+import br.com.bilotta.bluefood.domain.pedido.Pedido;
+import br.com.bilotta.bluefood.domain.pedido.PedidoRepository;
 import br.com.bilotta.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.bilotta.bluefood.domain.restaurante.ItemCardapio;
 import br.com.bilotta.bluefood.domain.restaurante.ItemCardapioRepository;
@@ -37,10 +39,17 @@ public class RestauranteController {
 	private ItemCardapioRepository itemCardapioRepository;
 	
 	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	@Autowired
 	private RestauranteService restauranteService;
 
 	@GetMapping(path = "/home")
-	public String home() {
+	public String home(Model model) {
+		Integer restauranteId = SecurityUtils.loggedRestaurante().getId();
+		List<Pedido> pedidos = pedidoRepository.findByRestaurante_IdOrderByDataDesc(restauranteId);
+		model.addAttribute("pedidos", pedidos);
+		
 		return "restaurante-home";
 	}
 	

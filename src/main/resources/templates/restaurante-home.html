@@ -22,9 +22,10 @@
 		
 		<div>
 			<h1>Pedidos em andamento</h1>
-			<input type="submit" value="#35334" onclick="location.href='restaurantePedido.html'"><br>
-			<input type="submit" value="#8956" onclick="location.href='restaurantePedido.html'"><br>
-			<input type="submit" value="#14214" onclick="location.href='restaurantePedido.html'"><br>
+			<div th:each="pedido : ${pedidos}">
+				<input type="button" th:value="${pedido.formattedId}" th:onclick="'location.href=\'' + @{/restaurante/pedido} + '?pedidoId=' + ${pedido.id} + '\';'"><br>
+			</div>
+		
 		</div>
 	 </div>	
 </body>

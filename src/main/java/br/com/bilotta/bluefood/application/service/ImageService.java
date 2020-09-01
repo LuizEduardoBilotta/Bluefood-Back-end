@@ -13,7 +13,7 @@ import br.com.bilotta.bluefood.util.IOUtils;
 public class ImageService {
 
 	@Value("${bluefood.files.logotipo}")
-	private String logotipoDir;
+	private String logotiposDir;
 	
 	@Value("${bluefood.files.comida}")
 	private String comidasDir;
@@ -23,7 +23,7 @@ public class ImageService {
 	
 	public void uploadLogotipo(MultipartFile multipartFile, String fileName) {
 		try {
-			IOUtils.copy(multipartFile.getInputStream(), fileName, logotipoDir);
+			IOUtils.copy(multipartFile.getInputStream(), fileName, logotiposDir);
 		} catch (IOException e) {
 			throw new ApplicationServiceException(e);
 		}
@@ -47,7 +47,7 @@ public class ImageService {
 				dir = comidasDir;
 			
 			} else if ("logotipo".equals(type)) {
-				dir = logotipoDir;
+				dir = logotiposDir;
 			
 			} else if ("categoria".equals(type)) {
 				dir = categoriasDir;
