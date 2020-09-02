@@ -37,13 +37,13 @@
 		</div>
 		<br /><br />
 				
-		<div th:each="tem : ${pedido.itens}">
+		<div th:each="item : ${pedido.itens}">
 			<span id="restauranteOpcaoTitulo" th:text="${item.itemCardapio.nome}"></span><br />
 			<span id="restauranteOpcaoTaxa" th:text="'Quantidade: ' + ${item.quantidade}"></span><br />
-			<span id="restauranteOpcaoTaxa" th:text="item.observacoes"></span><br />
+			<span id="restauranteOpcaoTaxa" th:text="${item.observacoes}"></span><br />
 			<span id="restauranteOpcaoTaxa" th:text="${#numbers.formatCurrency(item.itemCardapio.preco)}"></span>
+			<br /><br />
 		</div>
-		<br /><br />
 		
 		<div>
 			<span id="restauranteOpcaoTitulo">Taxa de entrega</span><br />
