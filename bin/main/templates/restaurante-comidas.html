@@ -30,7 +30,7 @@
 			<span id="restauranteOpcaoTitulo">Nova comida:</span><br />
 			<form method="post" th:object="${itemCardapio}" th:action="@{/restaurante/comidas/cadastrar}" enctype="multipart/form-data">
 				<fieldset>
-					<input type="hidden" name="restaurante.id" value="${restaurante.id}">
+					<input type="hidden" name="restaurante.id" th:value="${restaurante.id}">
 					
 					<label for="item">Nome: </label><br />	
 					<input type="text" id="nome" th:field="*{nome}"	th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''">

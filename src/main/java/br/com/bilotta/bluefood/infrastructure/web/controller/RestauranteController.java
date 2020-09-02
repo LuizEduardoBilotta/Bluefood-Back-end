@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.bilotta.bluefood.application.service.RelatorioService;
 import br.com.bilotta.bluefood.application.service.RestauranteService;
 import br.com.bilotta.bluefood.application.service.ValidationException;
 import br.com.bilotta.bluefood.domain.pedido.Pedido;
 import br.com.bilotta.bluefood.domain.pedido.PedidoRepository;
+import br.com.bilotta.bluefood.domain.pedido.RelatorioPedidoFilter;
 import br.com.bilotta.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.bilotta.bluefood.domain.restaurante.ItemCardapio;
 import br.com.bilotta.bluefood.domain.restaurante.ItemCardapioRepository;
@@ -43,6 +45,9 @@ public class RestauranteController {
 	
 	@Autowired
 	private RestauranteService restauranteService;
+	
+	@Autowired
+	private RelatorioService relatorioService;
 
 	@GetMapping(path = "/home")
 	public String home(Model model) {
@@ -148,8 +153,21 @@ public class RestauranteController {
 		model.addAttribute("pedido", pedido);
 		model.addAttribute("msg", "Status alterado com sucesso!");
 		
-		return "restaurante-pedido";
+		return "restaurante-pedido";	
+	}
+	
+	@GetMapping(path = "/relatorio/pedidos")
+	public String relatorioPedidos(
+			@ModelAttribute("relatorioPedidofilter") RelatorioPedidoFilter filter,
+			Model model) {
 		
+		Integer restauranteId = SecurityUtils.loggedRestaurante().getId();
+		List<Pedido> pedidos = relatorioService.listPedidos(restauranteId, filter);
+		model.addAttribute("pedidos", pedidos);
+		
+		model.addAttribute("filter", filter);
+		
+		return "restaurante-relatorio-pedidos";
 	}
 	
 }
