@@ -15,6 +15,7 @@ import br.com.bilotta.bluefood.domain.pedido.PedidoRepository;
 import br.com.bilotta.bluefood.domain.pedido.RelatorioItemFaturamento;
 import br.com.bilotta.bluefood.domain.pedido.RelatorioItemFilter;
 import br.com.bilotta.bluefood.domain.pedido.RelatorioPedidoFilter;
+import br.com.bilotta.bluefood.util.CollectionUtils;
 
 
 @Service
@@ -29,14 +30,14 @@ public class RelatorioService {
 		
 		if (pedidoId != null) {
 			Pedido pedido = pedidoRepository.findByIdAndRestaurante_Id(pedidoId, restauranteId);
-			return List.of(pedido);
+			return CollectionUtils.ListOf(pedido);
 		}
 		
 		LocalDate dataInicial = filter.getDataInicial();
 		LocalDate dataFinal = filter.getDataFinal();
 		
 		if (dataInicial == null) {
-			return List.of();
+			return CollectionUtils.ListOf();
 		}
 		
 		if (dataFinal == null) {
@@ -56,7 +57,7 @@ public class RelatorioService {
 		LocalDate dataFinal = filter.getDataFinal();
 		
 		if (dataInicial == null) {
-			return List.of();
+			return CollectionUtils.ListOf();
 		}
 		
 		if (dataFinal == null) {

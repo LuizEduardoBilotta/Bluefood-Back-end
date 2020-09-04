@@ -40,22 +40,22 @@ import lombok.ToString;
 public class Restaurante extends Usuario{
 	
 	@NotBlank
-	@Pattern(regexp = "[0-9]{14}", message = "O CNPJ possui formato inv·lido")
+	@Pattern(regexp = "[0-9]{14}", message = "O CNPJ possui formato inv√°lido")
 	@Column(length = 14, nullable = false)
 	private String cnpj;
 	
 	@Size(max = 80)
 	private String logotipo;
 	
-	@UploadConstraint(acceptedTypes = { FileType.PNG, FileType.JPG }, message = "O arquivo n„o n„o È um arquivo de imagem v·lido!")
+	@UploadConstraint(acceptedTypes = { FileType.PNG, FileType.JPG }, message = "O arquivo n√£o n√£o √© um arquivo de imagem v√°lido!")
 	private transient MultipartFile logotipoFile;
 	
-	@NotNull(message = "A taxa de entrega n„o pode ser vazia!")
+	@NotNull(message = "A taxa de entrega n√£o pode ser vazia!")
 	@Min(0)
 	@Max(99)
 	private BigDecimal taxaEntrega;
 	
-	@NotNull(message = "O tempo de entrega n„o pode ser vazio!")
+	@NotNull(message = "O tempo de entrega n√£o pode ser vazio!")
 	@Min(0)
 	@Max(120)
 	private Integer tempoEntregaBase;
@@ -66,7 +66,7 @@ public class Restaurante extends Usuario{
 			joinColumns = @JoinColumn(name = "restaurante_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_restaurante_id")
 			  )
-	@Size(min = 1, message = "O restaurante precisa ter no mÌnimo uma categoria!")
+	@Size(min = 1, message = "O restaurante precisa ter no m√≠nimo uma categoria!")
 	@ToString.Exclude
 	private Set<CategoriaRestaurante> categorias = new HashSet<>(0);
 	
@@ -79,7 +79,7 @@ public class Restaurante extends Usuario{
 	
 	public void setLogotipoFileName() {
 		if (getId() == null) {
-			throw new IllegalStateException("… necess·rio primeiramente gravar o registro!");
+			throw new IllegalStateException("√â necess√°rio primeiramente gravar o registro!");
 		}
 		
 		this.logotipo = String.format("%04d-logo.%s", getId(), FileType.of(logotipoFile.getContentType()).getExtension());

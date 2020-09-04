@@ -53,7 +53,7 @@ public class ImageService {
 				dir = categoriasDir;
 			
 			} else {
-				throw new Exception(type + " N„o È um tipo de imagem v·lido!");
+				throw new Exception(type + " N√£o √© um tipo de imagem v√°lido!");
 			}
 			
 			return IOUtils.getBytes(Paths.get(dir, imgName));

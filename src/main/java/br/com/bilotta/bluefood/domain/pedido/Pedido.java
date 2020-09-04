@@ -33,7 +33,7 @@ import lombok.Setter;
 public class Pedido implements Serializable {
 	
 	public enum Status {
-		Producao(1, "Em produção", false),
+		Producao(1, "Em produÃ§Ã£o", false),
 		Entrega(2, "saiu para entrega", false),
 		Concluido(3, "Pedido entregue", true);
 		

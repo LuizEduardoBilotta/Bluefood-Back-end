@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.bilotta.bluefood.domain.cliente.Cliente;
 import br.com.bilotta.bluefood.domain.cliente.ClienteRepository;
-import br.com.bilotta.bluefood.domain.pagamento.StatusPagamento;
 import br.com.bilotta.bluefood.domain.pedido.Pedido;
 import br.com.bilotta.bluefood.domain.pedido.Pedido.Status;
 import br.com.bilotta.bluefood.domain.pedido.PedidoRepository;
@@ -63,10 +63,10 @@ public class InsertDataForTesting {
 		
 		List<Restaurante> restaurantes = new ArrayList<>();
 		
-		CategoriaRestaurante categoriaPizza = categoriaRestauranteRepository.findById(1).orElseThrow();
-		CategoriaRestaurante categoriaSanduiche = categoriaRestauranteRepository.findById(2).orElseThrow();
-		CategoriaRestaurante categoriaSobremesa = categoriaRestauranteRepository.findById(5).orElseThrow();
-		CategoriaRestaurante categoriaJapones = categoriaRestauranteRepository.findById(6).orElseThrow();
+		CategoriaRestaurante categoriaPizza = categoriaRestauranteRepository.findById(1).orElseThrow(NoSuchElementException::new);
+		CategoriaRestaurante categoriaSanduiche = categoriaRestauranteRepository.findById(2).orElseThrow(NoSuchElementException::new);
+		CategoriaRestaurante categoriaSobremesa = categoriaRestauranteRepository.findById(5).orElseThrow(NoSuchElementException::new);
+		CategoriaRestaurante categoriaJapones = categoriaRestauranteRepository.findById(6).orElseThrow(NoSuchElementException::new);
 		
 		Restaurante r = new Restaurante();
 		r.setNome("Bubger King");
@@ -146,7 +146,7 @@ public class InsertDataForTesting {
 		List<Cliente> clientes = new ArrayList<>();
 		
 		Cliente c = new Cliente();
-		c.setNome("João Silva");
+		c.setNome("JoÃ£o Silva");
 		c.setEmail("joaosilva@gmail.com");
 		c.setSenha(StringUtils.encrypt("c"));
 		c.setCep("00000000");
@@ -171,8 +171,8 @@ public class InsertDataForTesting {
 	
 	private void itensCardapio(Restaurante[] restaurantes) {
 		ItemCardapio ic = new ItemCardapio();
-		ic.setCategoria("Sanduíche");
-		ic.setDescricao("Delicioso sanduíche com molho");
+		ic.setCategoria("SanduÃ­che");
+		ic.setDescricao("Delicioso sanduÃ­che com molho");
 		ic.setNome("Double Cheese Burger Special");
 		ic.setPreco(BigDecimal.valueOf(23.8));
 		ic.setRestaurante(restaurantes[0]);
@@ -181,8 +181,8 @@ public class InsertDataForTesting {
 		itemCardapioRepository.save(ic);
 		
 		ic = new ItemCardapio();
-		ic.setCategoria("Sanduíche");
-		ic.setDescricao("Sanduíche padrão que mata a fome");
+		ic.setCategoria("SanduÃ­che");
+		ic.setDescricao("SanduÃ­che padrÃ£o que mata a fome");
 		ic.setNome("Cheese Burger Simples");
 		ic.setPreco(BigDecimal.valueOf(17.8));
 		ic.setRestaurante(restaurantes[0]);
@@ -191,9 +191,9 @@ public class InsertDataForTesting {
 		itemCardapioRepository.save(ic);
 		
 		ic = new ItemCardapio();
-		ic.setCategoria("Sanduíche");
-		ic.setDescricao("Sanduíche natural com peito de peru");
-		ic.setNome("Sanduíche natural da casa");
+		ic.setCategoria("SanduÃ­che");
+		ic.setDescricao("SanduÃ­che natural com peito de peru");
+		ic.setNome("SanduÃ­che natural da casa");
 		ic.setPreco(BigDecimal.valueOf(11.8));
 		ic.setRestaurante(restaurantes[0]);
 		ic.setDestaque(false);
@@ -202,7 +202,7 @@ public class InsertDataForTesting {
 		
 		ic = new ItemCardapio();
 		ic.setCategoria("Bebida");
-		ic.setDescricao("Refrigerante com gás");
+		ic.setDescricao("Refrigerante com gï¿½s");
 		ic.setNome("Refrigerante tradicional");
 		ic.setPreco(BigDecimal.valueOf(9));
 		ic.setRestaurante(restaurantes[0]);

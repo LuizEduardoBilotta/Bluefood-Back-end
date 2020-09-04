@@ -4,7 +4,7 @@ import javax.validation.constraints.Pattern;
 
 public class DadosCartao {
 	
-	@Pattern(regexp = "\\d{16}", message = "O número do cartao é inválido!")
+	@Pattern(regexp = "\\d{16}", message = "O nÃºmero do cartao Ã© invÃ¡lido!")
 	private String numCartao;
 	
 	public String getNumCartao() {

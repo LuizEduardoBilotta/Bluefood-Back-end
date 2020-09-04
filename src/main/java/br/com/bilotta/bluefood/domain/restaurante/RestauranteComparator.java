@@ -26,7 +26,7 @@ public class RestauranteComparator<T> implements Comparator<Restaurante>{
 			result = r1.calcularTempoEntrega(cep).compareTo(r2.calcularTempoEntrega(cep));
 		
 		} else {
-			throw new IllegalStateException("O valor de ordenaÁ„o " + filter.getOrder() + " n„o È v·lido!");
+			throw new IllegalStateException("O valor de ordena√ß√£o " + filter.getOrder() + " n√£o √© v√°lido!");
 		}
 		
 		return filter.isAsc() ? result : -result;

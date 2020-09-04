@@ -26,7 +26,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 			response.sendRedirect("restaurante/home");
 		
 		} else {
-			throw new IllegalStateException("Erro durante o processo de autenticação!");
+			throw new IllegalStateException("Erro durante o processo de autenticaÃ§Ã£o!");
 		}
 		
 		
