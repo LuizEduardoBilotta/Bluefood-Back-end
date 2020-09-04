@@ -78,6 +78,7 @@ public class RestauranteService {
 		return true;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Restaurante> search(SearchFilter filter) {
 		List<Restaurante> restaurantes;
 		
@@ -101,6 +102,7 @@ public class RestauranteService {
 				it.remove();
 			}
 		}
+		
 		
 		RestauranteComparator comparator = new RestauranteComparator(filter, SecurityUtils.loggedCliente().getCep());
 		restaurantes.sort(comparator);
